@@ -17,3 +17,7 @@ class Class3 {
 
     }
 }
+
+open class Parent
+
+class Child: Parent()

@@ -1,6 +1,6 @@
 package com.rustam;
 
-public class Person {
+public final class Person {
     private final String firstName;
     private final String lastName;
     private final Integer age;
