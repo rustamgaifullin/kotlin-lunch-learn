@@ -9,6 +9,7 @@ class SomeString {
 fun main(args: Array<String>) {
     val a: Int = 1
 //    a = null //compilation error
+    val b: Int? = null
 
     val someString = SomeString()
 
@@ -23,10 +24,15 @@ fun main(args: Array<String>) {
         println(nullableString.substring(0)) //no need to use safe call
     }
 
-    val subString = nullableString?.substring(0) ?: "c"
-    println(subString) //print c
-
-
-    nullableString?.let {println(it)} //print nothing
+    nullableString?.let { println(it) } //print nothing
     normalString?.let { println(it) } //print ab
+
+    val subString1 = if (nullableString != null) nullableString.substring(0) else "null"
+    val subString2 = nullableString?.substring(0) ?: "null"
+
+    println(subString1) // print null
+    println(subString2) //print null
+
+    //for NPE lovers :)
+    println(someString.nullableString()!!.substring(0)) //NullPointerException
 }
