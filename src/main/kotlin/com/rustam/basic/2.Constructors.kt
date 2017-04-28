@@ -22,7 +22,14 @@ fun main(args: Array<String>) {
     println("horsePower - ${carEngine.horsePower}, injection - ${carEngine.injection}")
     println("horsePower - ${sportCarEngine.horsePower}, injection - ${sportCarEngine.injection}")
 
+    val valFromFactory = ClassWithPrivateConstructor.create(42)
+    println(valFromFactory.someProperty)
 }
 
 class ClassWithPrivateConstructor private constructor(val someProperty: Int) {
+    companion object {
+        fun create(someProperty: Int): ClassWithPrivateConstructor {
+            return ClassWithPrivateConstructor(someProperty)
+        }
+    }
 }
